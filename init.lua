@@ -146,7 +146,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'NeoSolarized',
+        theme = "NeoSolarized",
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
       },
@@ -177,8 +177,11 @@ require('lazy').setup({
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
     opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
+      char = '',
+      show_trailing_blankline_indent = true,
+      show_current_context = true,
+      show_current_context_start = true,
+      context_char = "│"
     },
   },
 
