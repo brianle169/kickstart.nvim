@@ -170,7 +170,14 @@ require('lazy').setup({
               hint = ' '
             }
           }, 'encoding', 'filetype' },
-        lualine_y = { 'progress' },
+        lualine_y = {
+          {
+            require('lazy.status').updates,
+            cond = require('lazy.status').has_updates,
+            color = { fg = '#ff9e64' },
+          },
+          'progress'
+        },
         lualine_z = { 'location' }
       },
       inactive_sections = {
@@ -614,4 +621,6 @@ vim.cmd [[
 ]]
 
 -- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
 -- vim: ts=2 sts=2 sw=2 et
