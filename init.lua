@@ -231,8 +231,8 @@ require('lazy').setup({
 vim.o.hlsearch = false
 
 -- Make line numbers default
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -269,13 +269,36 @@ vim.o.termguicolors = true
 -- [[ Basic Keymaps ]]
 
 -- Navigation keymaps - Inspired by NvChad
--- INSERT MODE
+-- INSERT MODE --
 vim.keymap.set('i', '<C-b>', '<ESC>^i') -- beginning of lines
 vim.keymap.set('i', '<C-e>', '<End>')   -- end of line
 vim.keymap.set('i', '<C-h>', '<Left>')  -- navigate in insert mode
 vim.keymap.set('i', '<C-j>', '<Down>')  -- navigate in insert mode
 vim.keymap.set('i', '<C-k>', '<Up>')    -- navigate in insert mode
 vim.keymap.set('i', '<C-l>', '<Right>') -- navigate in insert mode
+
+-- NORMAL MODE --
+vim.keymap.set('n', '<C-s>', '<cmd> w <CR>')                 -- save file
+vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>')               -- copy whole file
+vim.keymap.set('n', '<ESC>', ':noh <CR>')                    -- remove search highlights
+vim.keymap.set('n', 'sh', '<C-w>h')                          -- move to window left
+vim.keymap.set('n', 'sj', '<C-w>j')                          -- move to window bottom
+vim.keymap.set('n', 'sk', '<C-w>k')                          -- move to window upper
+vim.keymap.set('n', 'sl', '<C-w>l')                          -- move to window right
+vim.keymap.set('n', '<leader>ss', '<cmd> split <CR><C-w>w')  -- split windows horizontally
+vim.keymap.set('n', '<leader>sv', '<cmd> vsplit <CR><C-w>w') -- split windows vertically
+vim.keymap.set('n', '<leader>x', '<cmd> close <CR>')         -- close current window
+vim.keymap.set('n', '<leader>n', '<cmd> set nu! <CR>')       -- toggle number
+vim.keymap.set('n', '<leader>rl', '<cmd> set rnu! <CR>')     -- toggle relative number
+vim.keymap.set('n', '<C-w><left>', '<C-w><')                 -- Resize window horizontally to the left
+vim.keymap.set('n', '<C-w><right>', '<C-w>>')                -- Resize window horizontally to the right
+vim.keymap.set('n', '<C-w><up>', '<C-w>+')                   -- Resize window vertically (bigger)
+vim.keymap.set('n', '<C-w><down>', '<C-w>-')                 -- Resize window vertically (smaller)
+
+-- REPLACE MODE --
+-- Don't copy the replaced text after pasting in visual mode
+-- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
+vim.keymap.set('x', 'p', 'p:let @+=@0<CR>:let @"=@0<CR>', { silent = true })
 
 
 -- Keymaps for better default experience
@@ -284,8 +307,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set({ 'n', 'i' }, '<C-n>', ':Neotree toggle=true<CR>')
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'v', 'x' }, 'k', "v:count || mode(1)[0:1] ? 'k' : 'gk'", { expr = true })
+vim.keymap.set({ 'n', 'v', 'x' }, 'j', "v:count || mode(1)[0:1] ? 'j' : 'gj'", { expr = true })
+vim.keymap.set({ 'n', 'v' }, '<Up>', "v:count || mode(1)[0:1] ? 'k' : 'gk'", { expr = true })
+vim.keymap.set({ 'n', 'v' }, '<Down>', "v:count || mode(1)[0:1] ? 'j' : 'gj'", { expr = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
