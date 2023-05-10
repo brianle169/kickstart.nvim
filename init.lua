@@ -1,11 +1,3 @@
---[[
-
-=====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
-=====================================================================
-
-P.S. You can delete this when you're done too. It's your config now :)
---]]
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -480,11 +472,58 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  clangd = {},
+  clangd = {
+    cmd = { 'clangd' },
+    filetypes = { 'c', 'cpp' }
+  },
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  tsserver = {},
+  tsserver = {
+    cmd = { 'typescript-language-server', '--stdio' },
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    init_options = {
+      hostInfo = "neovim"
+    },
+  },
+
+  cssls = {
+    cmd = { 'vscode-css-language-server', '--stdio' },
+    filetypes = { 'css', 'scss', 'less' },
+    settings = {
+      css = {
+        validate = true
+      },
+      less = {
+        validate = true
+      },
+      scss = {
+        validate = true
+      },
+    }
+  },
+
+  html = {
+    cmd = { 'vscode-html-language-server', '--stdio' },
+    filetypes = { 'html' },
+    init_options = {
+      configurationSection = {
+        'html', 'css', 'javascript'
+      },
+      embeddedLanguages = {
+        css = true,
+        javascript = true
+      },
+      provideFormatter = true
+    },
+    settings = {}
+  },
+
+  emmet_ls = {
+    cmd = { 'emmet_ls', '--stdio' },
+    filetypes = { 'astro', 'css', 'eruby', 'html', 'htmldjango', 'javascriptreact', 'less', 'pug', 'sass', 'scss',
+      'svelte', 'typescriptreact', 'vue' }
+  },
 
   lua_ls = {
     Lua = {
@@ -595,18 +634,6 @@ cmp.setup {
   },
   formatting = {
     fields = { 'menu', 'abbr', 'kind' },
-    --[[ format = lspkind.cmp_format({
-      with_text = false,
-      maxwidth = 50,
-      mode = "symbol_text",
-      menu = ({
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[Latex]",
-      })
-    }) ]]
     format = function(entry, vim_item)
       -- Kind icons
       vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
@@ -630,6 +657,4 @@ vim.cmd [[
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
--- vim: ts=2 sts=2 sw=2 et
 -- vim: ts=2 sts=2 sw=2 et
