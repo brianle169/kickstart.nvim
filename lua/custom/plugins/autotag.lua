@@ -9,7 +9,7 @@ return {
         'php',
         'markdown',
         'astro', 'glimmer', 'handlebars', 'hbs'
-      }
+      },
     })
   end
 }
