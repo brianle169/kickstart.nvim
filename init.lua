@@ -118,6 +118,26 @@ require('lazy').setup({
     config = function()
       vim.cmd.colorscheme 'NeoSolarized'
     end,
+    opts = {
+      style = "dark", -- "dark" or "light"
+      transparent = true, -- true/false; Enable this to disable setting the background color
+      terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+      enable_italics = true, -- Italics for different hightlight groups (eg. Statement, Condition, Comment, Include, etc.)
+      styles = {
+    -- Style to be applied to different syntax groups
+        comments = { italic = true },
+        keywords = { italic = true },
+        functions = { bold = true },
+        variables = {},
+        string = { italic = true },
+        underline = true, -- true/false; for global underline
+        undercurl = true, -- true/false; for global undercurl
+      },
+  -- Add specific hightlight groups
+      on_highlights = function(highlights, colors) 
+        highlights.Include.fg = colors.red -- Using `red` foreground for Includes
+      end,
+    }
   },
 
   { -- Set lualine as statusline
@@ -127,9 +147,28 @@ require('lazy').setup({
       options = {
         icons_enabled = true,
         theme = 'NeoSolarized',
-        component_separators = '|',
-        section_separators = '',
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
       },
+       sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {{'filename', file_status = true, path = 0}},
+        lualine_x = {{ 'diagnostics', sources = { "nvim_diagnostic" }, symbols = { error = ' ', warn = ' ', info = ' ',
+                      hint = ' ' }},'encoding','filetype'},
+        lualine_y = {'progress'},
+        lualine_z = {'location'}
+      },
+      inactive_sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {{'filename', file_status = true, path = 1}},
+        lualine_x = {'location'},
+        lualine_y = {'tabs'},
+        lualine_z = {'windows'}
+      },
+      tabline = {},
+      extensions = {'fugitive'}
     },
   },
 
