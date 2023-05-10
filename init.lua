@@ -281,10 +281,10 @@ vim.keymap.set('i', '<C-l>', '<Right>') -- navigate in insert mode
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>')                 -- save file
 vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>')               -- copy whole file
 vim.keymap.set('n', '<ESC>', ':noh <CR>')                    -- remove search highlights
-vim.keymap.set('n', 'sh', '<C-w>h')                          -- move to window left
-vim.keymap.set('n', 'sj', '<C-w>j')                          -- move to window bottom
-vim.keymap.set('n', 'sk', '<C-w>k')                          -- move to window upper
-vim.keymap.set('n', 'sl', '<C-w>l')                          -- move to window right
+vim.keymap.set('n', '<A-h>', '<C-w>h')                       -- move to window left
+vim.keymap.set('n', '<A-j>', '<C-w>j')                       -- move to window bottom
+vim.keymap.set('n', '<A-k>', '<C-w>k')                       -- move to window upper
+vim.keymap.set('n', '<A-l>', '<C-w>l')                       -- move to window right
 vim.keymap.set('n', '<leader>ss', '<cmd> split <CR><C-w>w')  -- split windows horizontally
 vim.keymap.set('n', '<leader>sv', '<cmd> vsplit <CR><C-w>w') -- split windows vertically
 vim.keymap.set('n', '<leader>x', '<cmd> close <CR>')         -- close current window
