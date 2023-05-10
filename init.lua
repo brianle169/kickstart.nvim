@@ -44,7 +44,7 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
+  -- The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -270,12 +270,12 @@ vim.o.termguicolors = true
 
 -- Navigation keymaps - Inspired by NvChad
 -- INSERT MODE
-vim.keymap.set('i', '<C-b>', '<ESC>^i')  -- beginning of lines
-vim.keymap.set('i', '<C-e>', '<End>')    -- end of line
-vim.keymap.set('i', 'C-h>', '<Left>')    -- navigate in insert mode
-vim.keymap.set('i', 'C-j>', '<Down>')    -- navigate in insert mode
-vim.keymap.set('i', 'C-k>', '<Up>')      -- navigate in insert mode
-vim.keymap.set('i', 'C-l>', '<Right>')   -- navigate in insert mode
+vim.keymap.set('i', '<C-b>', '<ESC>^i') -- beginning of lines
+vim.keymap.set('i', '<C-e>', '<End>')   -- end of line
+vim.keymap.set('i', '<C-h>', '<Left>')  -- navigate in insert mode
+vim.keymap.set('i', '<C-j>', '<Down>')  -- navigate in insert mode
+vim.keymap.set('i', '<C-k>', '<Up>')    -- navigate in insert mode
+vim.keymap.set('i', '<C-l>', '<Right>') -- navigate in insert mode
 
 
 -- Keymaps for better default experience
