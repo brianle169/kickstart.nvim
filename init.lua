@@ -218,45 +218,51 @@ require('lazy').setup({
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
-
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.expandtab = true
+vim.opt.autoindent = true
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.opt.hlsearch = false
 
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.opt.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeout = true
-vim.o.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.opt.updatetime = 250
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
 
 -- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
+
+
+-- Others
+vim.opt.background = 'dark'
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- [[ Basic Keymaps ]]
 
@@ -270,6 +276,7 @@ vim.keymap.set('i', '<C-k>', '<Up>')    -- navigate in insert mode
 vim.keymap.set('i', '<C-l>', '<Right>') -- navigate in insert mode
 
 -- NORMAL MODE --
+vim.keymap.set("n", "x", '"_x')                              -- delete character without copying it
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>')                 -- save file
 vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>')               -- copy whole file
 vim.keymap.set('n', '<ESC>', ':noh <CR>')                    -- remove search highlights
@@ -296,7 +303,7 @@ vim.keymap.set('x', 'p', 'p:let @+=@0<CR>:let @"=@0<CR>', { silent = true })
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.keymap.set({ 'n', 'i' }, '<C-n>', ':Neotree toggle=true<CR>')
+vim.keymap.set({ 'n', 'i' }, '<C-n>', ':Neotree toggle=true<CR>', { silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set({ 'n', 'v', 'x' }, 'k', "v:count || mode(1)[0:1] ? 'k' : 'gk'", { expr = true })
@@ -476,9 +483,7 @@ local servers = {
     cmd = { 'clangd' },
     filetypes = { 'c', 'cpp' }
   },
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
+
   tsserver = {
     cmd = { 'typescript-language-server', '--stdio' },
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
