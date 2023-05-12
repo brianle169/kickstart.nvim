@@ -8,14 +8,34 @@ return {
       disable_move = true,
       config = {
         header = { '',
+          '                                                       ',
+          '                                                       ',
+          '                                                       ',
+          '                                                       ',
+          '                                                       ',
+          '                                                       ',
+          '                                                       ',
+          '                                                       ',
           ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
           ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
           ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
           ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
           ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
           ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+          '                                                       ',
+          '                                                       ',
+          '                                                       ',
           '', },
         center = {
+          {
+            icon = '󰉋   ',
+            icon_hl = 'Keyword',
+            desc = 'Open File Tree',
+            desc_hl = 'Function',
+            key = 'n',
+            key_hl = 'Boolean',
+            action = function() vim.cmd('Neotree toggle=true <CR>') end
+          },
           {
             icon = '󰈙   ',
             icon_hl = 'Keyword',
@@ -72,7 +92,12 @@ return {
 
           }
         },
-        footer = {} --your footer
+        footer = {
+          '                                                       ',
+          '                                                       ',
+          '                                                       ',
+          ' Welcome to the work station of Binobo '
+        } --your footer
       }
     }
   end,
