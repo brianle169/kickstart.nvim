@@ -288,7 +288,7 @@ vim.keymap.set('n', '<leader>ss', '<cmd> split <CR><C-w>w', { silent = true })  
 vim.keymap.set('n', '<leader>sv', '<cmd> vsplit <CR><C-w>w', { silent = true }) -- split windows vertically
 vim.keymap.set('n', '<leader>x', '<cmd> close <CR>', { silent = true })         -- close current window
 vim.keymap.set('n', '<leader>n', '<cmd> set nu! <CR>', { silent = true })       -- toggle number
-vim.keymap.set('n', '<leader>rl', '<cmd> set rnu! <CR>', { silent = true })     -- toggle relative number
+vim.keymap.set('n', '<leader>rl', '<cmd> set rnu! <CR>')                        -- toggle relative number
 vim.keymap.set('n', '<C-w><left>', '<C-w><')                                    -- Resize window horizontally to the left
 vim.keymap.set('n', '<C-w><right>', '<C-w>>')                                   -- Resize window horizontally to the right
 vim.keymap.set('n', '<C-w><up>', '<C-w>+')                                      -- Resize window vertically (bigger)
