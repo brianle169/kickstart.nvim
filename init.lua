@@ -276,23 +276,23 @@ vim.keymap.set('i', '<C-k>', '<Up>')    -- navigate in insert mode
 vim.keymap.set('i', '<C-l>', '<Right>') -- navigate in insert mode
 
 -- NORMAL MODE --
-vim.keymap.set("n", "x", '"_x')                              -- delete character without copying it
-vim.keymap.set('n', '<C-s>', '<cmd> w <CR>')                 -- save file
-vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>')               -- copy whole file
-vim.keymap.set('n', '<ESC>', ':noh <CR>')                    -- remove search highlights
-vim.keymap.set('n', '<A-h>', '<C-w>h')                       -- move to window left
-vim.keymap.set('n', '<A-j>', '<C-w>j')                       -- move to window bottom
-vim.keymap.set('n', '<A-k>', '<C-w>k')                       -- move to window upper
-vim.keymap.set('n', '<A-l>', '<C-w>l')                       -- move to window right
-vim.keymap.set('n', '<leader>ss', '<cmd> split <CR><C-w>w')  -- split windows horizontally
-vim.keymap.set('n', '<leader>sv', '<cmd> vsplit <CR><C-w>w') -- split windows vertically
-vim.keymap.set('n', '<leader>x', '<cmd> close <CR>')         -- close current window
-vim.keymap.set('n', '<leader>n', '<cmd> set nu! <CR>')       -- toggle number
-vim.keymap.set('n', '<leader>rl', '<cmd> set rnu! <CR>')     -- toggle relative number
-vim.keymap.set('n', '<C-w><left>', '<C-w><')                 -- Resize window horizontally to the left
-vim.keymap.set('n', '<C-w><right>', '<C-w>>')                -- Resize window horizontally to the right
-vim.keymap.set('n', '<C-w><up>', '<C-w>+')                   -- Resize window vertically (bigger)
-vim.keymap.set('n', '<C-w><down>', '<C-w>-')                 -- Resize window vertically (smaller)
+vim.keymap.set("n", "x", '"_x')                                                 -- delete character without copying it
+vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { silent = true })                 -- save file
+vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { silent = true })               -- copy whole file
+vim.keymap.set('n', '<ESC>', ':noh <CR>', { silent = true })                    -- remove search highlights
+vim.keymap.set('n', '<A-h>', '<C-w>h')                                          -- move to window left
+vim.keymap.set('n', '<A-j>', '<C-w>j')                                          -- move to window bottom
+vim.keymap.set('n', '<A-k>', '<C-w>k')                                          -- move to window upper
+vim.keymap.set('n', '<A-l>', '<C-w>l')                                          -- move to window right
+vim.keymap.set('n', '<leader>ss', '<cmd> split <CR><C-w>w', { silent = true })  -- split windows horizontally
+vim.keymap.set('n', '<leader>sv', '<cmd> vsplit <CR><C-w>w', { silent = true }) -- split windows vertically
+vim.keymap.set('n', '<leader>x', '<cmd> close <CR>', { silent = true })         -- close current window
+vim.keymap.set('n', '<leader>n', '<cmd> set nu! <CR>', { silent = true })       -- toggle number
+vim.keymap.set('n', '<leader>rl', '<cmd> set rnu! <CR>', { silent = true })     -- toggle relative number
+vim.keymap.set('n', '<C-w><left>', '<C-w><')                                    -- Resize window horizontally to the left
+vim.keymap.set('n', '<C-w><right>', '<C-w>>')                                   -- Resize window horizontally to the right
+vim.keymap.set('n', '<C-w><up>', '<C-w>+')                                      -- Resize window vertically (bigger)
+vim.keymap.set('n', '<C-w><down>', '<C-w>-')                                    -- Resize window vertically (smaller)
 
 -- REPLACE MODE --
 -- Don't copy the replaced text after pasting in visual mode
@@ -334,6 +334,11 @@ require('telescope').setup {
     },
     path_display = 'absolute',
   },
+  pickers = {
+    colorscheme = {
+      enable_preview = true
+    }
+  }
 }
 
 -- Enable telescope fzf native, if installed
@@ -342,14 +347,9 @@ pcall(require('telescope').load_extension, 'fzf')
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer' })
-
+vim.keymap.set('n', '<leader>/', require('telescope.builtin').current_buffer_fuzzy_find,
+  { desc = '[/] Fuzzily search in current buffer' })
+vim.keymap.set('n', '<leader>sc', require('telescope.builtin').colorscheme, { desc = '[S]earch [C]olorscheme' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
@@ -360,7 +360,8 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
+  ensure_installed = { 'cpp', 'lua', 'python', 'rust', 'tsx',
+    'typescript', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
