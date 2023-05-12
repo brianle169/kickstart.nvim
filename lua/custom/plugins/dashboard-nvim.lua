@@ -15,7 +15,6 @@ return {
           '                                                       ',
           '                                                       ',
           '                                                       ',
-          '                                                       ',
           ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
           ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
           ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
@@ -81,6 +80,16 @@ return {
             key_hl = 'Boolean',
             action = function() vim.cmd('Telescope keymaps') end
           },
+          {
+            icon = '   ',
+            icon_hl = 'Keyword',
+            desc = 'View Lazy Plugins',
+            desc_hl = 'Function',
+            key = 'l',
+            key_hl = 'Boolean',
+            action = function() vim.cmd('Lazy') end
+          },
+
           {
             icon = '   ',
             icon_hl = 'Keyword',

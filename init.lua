@@ -277,7 +277,6 @@ vim.keymap.set('i', '<C-l>', '<Right>') -- navigate in insert mode
 
 -- NORMAL MODE --
 vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>', { silent = true })                 -- Open new tab
-vim.keymap.set('n', 'tc', '<cmd>tabclose<cr>', { silent = true })               -- Close current tab
 vim.keymap.set("n", "x", '"_x')                                                 -- delete character without copying it
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { silent = true })                 -- save file
 vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { silent = true })               -- copy whole file
@@ -357,7 +356,7 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-
+vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
