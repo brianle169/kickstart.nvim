@@ -13,6 +13,17 @@ return {
         separator_style = 'padded_slant',
         show_tab_indicators = false,
         diagnostics = 'nvim_lsp',
+        offsets = {
+          {
+            filetype = "neo-tree",
+            text = function()
+              return vim.fn.getcwd()
+            end,
+            highlight = "Directory",
+            offset_separator = true, -- use a "true" to enable the default, or set your own character
+            text_align = 'left',
+          }
+        },
         diagnostics_indicator = function(count, level)
           local icon = level:match("error") and " " or ""
           return " " .. icon .. count

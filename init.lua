@@ -276,6 +276,8 @@ vim.keymap.set('i', '<C-k>', '<Up>')    -- navigate in insert mode
 vim.keymap.set('i', '<C-l>', '<Right>') -- navigate in insert mode
 
 -- NORMAL MODE --
+vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>', { silent = true })                 -- Open new tab
+vim.keymap.set('n', 'tc', '<cmd>tabclose<cr>', { silent = true })               -- Close current tab
 vim.keymap.set("n", "x", '"_x')                                                 -- delete character without copying it
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { silent = true })                 -- save file
 vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { silent = true })               -- copy whole file
