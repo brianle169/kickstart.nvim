@@ -8,7 +8,7 @@ return {
         mode = 'tabs',
         always_show_bufferline = true,
         show_buffer_close_icons = false,
-        show_close_icon = false,
+        show_close_icon = true,
         color_icons = true,
         separator_style = 'slant',
         show_tab_indicators = false,
@@ -26,7 +26,7 @@ return {
         },
         diagnostics_indicator = function(count, level)
           local icon = level:match 'error' and ' ' or ''
-          return ' ' .. icon .. '  ' .. count
+          return ' ' .. icon .. ' ' .. count
         end,
       },
       highlights = {

@@ -122,39 +122,36 @@ require('lazy').setup({
       },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { { 'filename', file_status = true, path = 0 } },
-        lualine_x = {
+        lualine_b = { 'branch' },
+        lualine_c = {
           {
-            'diagnostics',
-            sources = { 'nvim_diagnostic' },
-            symbols = {
-              error = ' ',
-              warn = ' ',
-              info = ' ',
-              hint = ' ',
-            },
+            'filename',
+            file_status = true, -- displays file status (readonly status, modified status)
+            path = 0,           -- 0 = just filename, 1 = relative path, 2 = absolute path
           },
+        },
+        lualine_x = {
+          { 'diagnostics', sources = { 'nvim_diagnostic' },
+            symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },
           'encoding',
           'filetype',
         },
-        lualine_y = {
-          {
-            require('lazy.status').updates,
-            cond = require('lazy.status').has_updates,
-            color = { fg = '#ff9e64' },
-          },
-          'progress',
-        },
+        lualine_y = { 'progress' },
         lualine_z = { 'location' },
       },
       inactive_sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { { 'filename', file_status = true, path = 1 } },
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {
+          {
+            'filename',
+            file_status = true, -- displays file status (readonly status, modified status)
+            path = 1,           -- 0 = just filename, 1 = relative path, 2 = absolute path
+          },
+        },
         lualine_x = { 'location' },
-        lualine_y = { 'tabs' },
-        lualine_z = { 'windows' },
+        lualine_y = {},
+        lualine_z = {},
       },
       tabline = {},
       extensions = { 'fugitive' },
@@ -297,6 +294,8 @@ vim.keymap.set('n', '<C-w><left>', '<C-w><')                                    
 vim.keymap.set('n', '<C-w><right>', '<C-w>>')                                   -- Resize window horizontally to the right
 vim.keymap.set('n', '<C-w><up>', '<C-w>+')                                      -- Resize window vertically (bigger)
 vim.keymap.set('n', '<C-w><down>', '<C-w>-')                                    -- Resize window vertically (smaller)
+vim.keymap.set('n', '<C-d>', '<C-d>zz')                                         -- move half page down && center cursor
+vim.keymap.set('n', '<C-u>', '<C-u>zz')                                         -- move half page down && center cursor
 
 -- REPLACE MODE --
 -- Don't copy the replaced text after pasting in visual mode
