@@ -47,7 +47,16 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       opts = {} },
+      {
+        'j-hui/fidget.nvim',
+        opts = {
+          window = {
+            relative = 'editor',
+            blend = 0,
+            border = 'rounded',
+          },
+        },
+      },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -57,23 +66,15 @@ require('lazy').setup({
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer',
-      'onsails/lspkind.nvim' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer', 'onsails/lspkind.nvim' },
   },
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',          opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
-      signs = {
-        -- add = { text = '+' },
-        -- change = { text = '~' },
-        -- delete = { text = '_' },
-        -- topdelete = { text = '‾' },
-        -- changedelete = { text = '~' },
-      },
     },
   },
 
@@ -85,10 +86,10 @@ require('lazy').setup({
       vim.cmd.colorscheme 'NeoSolarized'
     end,
     opts = {
-      style = "dark",         -- "dark" or "light"
-      transparent = true,     -- true/false; Enable this to disable setting the background color
+      style = 'dark', -- "dark" or "light"
+      transparent = true, -- true/false; Enable this to disable setting the background color
       terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-      enable_italics = true,  -- Italics for different hightlight groups (eg. Statement, Condition, Comment, Include, etc.)
+      enable_italics = true, -- Italics for different hightlight groups (eg. Statement, Condition, Comment, Include, etc.)
       styles = {
         -- Style to be applied to different syntax groups
         comments = { italic = true },
@@ -103,7 +104,7 @@ require('lazy').setup({
       on_highlights = function(highlights, colors)
         highlights.Include.fg = colors.red -- Using `red` foreground for Includes
       end,
-    }
+    },
   },
 
   {
@@ -114,7 +115,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = "NeoSolarized",
+        theme = 'NeoSolarized',
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
       },
@@ -125,23 +126,26 @@ require('lazy').setup({
         lualine_x = {
           {
             'diagnostics',
-            sources = { "nvim_diagnostic" },
+            sources = { 'nvim_diagnostic' },
             symbols = {
               error = ' ',
               warn = ' ',
               info = ' ',
-              hint = ' '
-            }
-          }, 'encoding', 'filetype' },
+              hint = ' ',
+            },
+          },
+          'encoding',
+          'filetype',
+        },
         lualine_y = {
           {
             require('lazy.status').updates,
             cond = require('lazy.status').has_updates,
             color = { fg = '#ff9e64' },
           },
-          'progress'
+          'progress',
         },
-        lualine_z = { 'location' }
+        lualine_z = { 'location' },
       },
       inactive_sections = {
         lualine_a = { 'mode' },
@@ -149,10 +153,10 @@ require('lazy').setup({
         lualine_c = { { 'filename', file_status = true, path = 1 } },
         lualine_x = { 'location' },
         lualine_y = { 'tabs' },
-        lualine_z = { 'windows' }
+        lualine_z = { 'windows' },
       },
       tabline = {},
-      extensions = { 'fugitive' }
+      extensions = { 'fugitive' },
     },
   },
 
@@ -166,12 +170,12 @@ require('lazy').setup({
       show_trailing_blankline_indent = true,
       show_current_context = true,
       show_current_context_start = true,
-      context_char = "│"
+      context_char = '│',
     },
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',         opts = {} },
+  { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -195,7 +199,7 @@ require('lazy').setup({
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
-    build = ":TSUpdate",
+    build = ':TSUpdate',
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -257,7 +261,6 @@ vim.opt.timeoutlen = 300
 -- NOTE: You should make sure your terminal supports this
 vim.opt.termguicolors = true
 
-
 -- Others
 vim.opt.background = 'dark'
 vim.opt.splitright = true
@@ -268,37 +271,36 @@ vim.opt.splitbelow = true
 -- Navigation keymaps - Inspired by NvChad
 -- INSERT MODE --
 vim.keymap.set('i', '<C-b>', '<ESC>^i') -- beginning of lines
-vim.keymap.set('i', '<C-e>', '<End>')   -- end of line
-vim.keymap.set('i', '<C-h>', '<Left>')  -- navigate in insert mode
-vim.keymap.set('i', '<C-j>', '<Down>')  -- navigate in insert mode
-vim.keymap.set('i', '<C-k>', '<Up>')    -- navigate in insert mode
+vim.keymap.set('i', '<C-e>', '<End>') -- end of line
+vim.keymap.set('i', '<C-h>', '<Left>') -- navigate in insert mode
+vim.keymap.set('i', '<C-j>', '<Down>') -- navigate in insert mode
+vim.keymap.set('i', '<C-k>', '<Up>') -- navigate in insert mode
 vim.keymap.set('i', '<C-l>', '<Right>') -- navigate in insert mode
 
 -- NORMAL MODE --
-vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>', { silent = true })                 -- Open new tab
-vim.keymap.set("n", "x", '"_x')                                                 -- delete character without copying it
-vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { silent = true })                 -- save file
-vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { silent = true })               -- copy whole file
-vim.keymap.set('n', '<ESC>', ':noh <CR>', { silent = true })                    -- remove search highlights
-vim.keymap.set('n', '<A-h>', '<C-w>h')                                          -- move to window left
-vim.keymap.set('n', '<A-j>', '<C-w>j')                                          -- move to window bottom
-vim.keymap.set('n', '<A-k>', '<C-w>k')                                          -- move to window upper
-vim.keymap.set('n', '<A-l>', '<C-w>l')                                          -- move to window right
-vim.keymap.set('n', '<leader>ss', '<cmd> split <CR><C-w>w', { silent = true })  -- split windows horizontally
+vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>', { silent = true }) -- Open new tab
+vim.keymap.set('n', 'x', '"_x') -- delete character without copying it
+vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { silent = true }) -- save file
+vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { silent = true }) -- copy whole file
+vim.keymap.set('n', '<ESC>', ':noh <CR>', { silent = true }) -- remove search highlights
+vim.keymap.set('n', '<A-h>', '<C-w>h') -- move to window left
+vim.keymap.set('n', '<A-j>', '<C-w>j') -- move to window bottom
+vim.keymap.set('n', '<A-k>', '<C-w>k') -- move to window upper
+vim.keymap.set('n', '<A-l>', '<C-w>l') -- move to window right
+vim.keymap.set('n', '<leader>ss', '<cmd> split <CR><C-w>w', { silent = true }) -- split windows horizontally
 vim.keymap.set('n', '<leader>sv', '<cmd> vsplit <CR><C-w>w', { silent = true }) -- split windows vertically
-vim.keymap.set('n', '<leader>x', '<cmd> close <CR>', { silent = true })         -- close current window
-vim.keymap.set('n', '<leader>n', '<cmd> set nu! <CR>', { silent = true })       -- toggle number
-vim.keymap.set('n', '<leader>rl', '<cmd> set rnu! <CR>')                        -- toggle relative number
-vim.keymap.set('n', '<C-w><left>', '<C-w><')                                    -- Resize window horizontally to the left
-vim.keymap.set('n', '<C-w><right>', '<C-w>>')                                   -- Resize window horizontally to the right
-vim.keymap.set('n', '<C-w><up>', '<C-w>+')                                      -- Resize window vertically (bigger)
-vim.keymap.set('n', '<C-w><down>', '<C-w>-')                                    -- Resize window vertically (smaller)
+vim.keymap.set('n', '<leader>x', '<cmd> close <CR>', { silent = true }) -- close current window
+vim.keymap.set('n', '<leader>n', '<cmd> set nu! <CR>', { silent = true }) -- toggle number
+vim.keymap.set('n', '<leader>rl', '<cmd> set rnu! <CR>') -- toggle relative number
+vim.keymap.set('n', '<C-w><left>', '<C-w><') -- Resize window horizontally to the left
+vim.keymap.set('n', '<C-w><right>', '<C-w>>') -- Resize window horizontally to the right
+vim.keymap.set('n', '<C-w><up>', '<C-w>+') -- Resize window vertically (bigger)
+vim.keymap.set('n', '<C-w><down>', '<C-w>-') -- Resize window vertically (smaller)
 
 -- REPLACE MODE --
 -- Don't copy the replaced text after pasting in visual mode
 -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
 vim.keymap.set('x', 'p', 'p:let @+=@0<CR>:let @"=@0<CR>', { silent = true })
-
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -336,9 +338,9 @@ require('telescope').setup {
   },
   pickers = {
     colorscheme = {
-      enable_preview = true
-    }
-  }
+      enable_preview = true,
+    },
+  },
 }
 
 -- Enable telescope fzf native, if installed
@@ -347,8 +349,7 @@ pcall(require('telescope').load_extension, 'fzf')
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', require('telescope.builtin').current_buffer_fuzzy_find,
-  { desc = '[/] Fuzzily search in current buffer' })
+vim.keymap.set('n', '<leader>/', require('telescope.builtin').current_buffer_fuzzy_find, { desc = '[/] Fuzzily search in current buffer' })
 vim.keymap.set('n', '<leader>sc', require('telescope.builtin').colorscheme, { desc = '[S]earch [C]olorscheme' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
@@ -361,8 +362,7 @@ vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc =
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'cpp', 'lua', 'python', 'rust', 'tsx',
-    'typescript', 'vimdoc', 'vim' },
+  ensure_installed = { 'cpp', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -428,7 +428,7 @@ require('nvim-treesitter.configs').setup {
 -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" }) -- use lspsaga
 -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" }) -- use lspsaga
 -- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" }) -- Use lspsaga instead
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
@@ -479,14 +479,14 @@ end
 local servers = {
   clangd = {
     cmd = { 'clangd' },
-    filetypes = { 'c', 'cpp' }
+    filetypes = { 'c', 'cpp' },
   },
 
   tsserver = {
     cmd = { 'typescript-language-server', '--stdio' },
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
     init_options = {
-      hostInfo = "neovim"
+      hostInfo = 'neovim',
     },
   },
 
@@ -495,15 +495,15 @@ local servers = {
     filetypes = { 'css', 'scss', 'less' },
     settings = {
       css = {
-        validate = true
+        validate = true,
       },
       less = {
-        validate = true
+        validate = true,
       },
       scss = {
-        validate = true
+        validate = true,
       },
-    }
+    },
   },
 
   html = {
@@ -511,21 +511,22 @@ local servers = {
     filetypes = { 'html' },
     init_options = {
       configurationSection = {
-        'html', 'css', 'javascript'
+        'html',
+        'css',
+        'javascript',
       },
       embeddedLanguages = {
         css = true,
-        javascript = true
+        javascript = true,
       },
-      provideFormatter = true
+      provideFormatter = true,
     },
-    settings = {}
+    settings = {},
   },
 
   emmet_ls = {
     cmd = { 'emmet_ls', '--stdio' },
-    filetypes = { 'astro', 'css', 'eruby', 'html', 'htmldjango', 'javascriptreact', 'less', 'pug', 'sass', 'scss',
-      'svelte', 'typescriptreact', 'vue' }
+    filetypes = { 'astro', 'css', 'eruby', 'html', 'htmldjango', 'javascriptreact', 'less', 'pug', 'sass', 'scss', 'svelte', 'typescriptreact', 'vue' },
   },
 
   lua_ls = {
@@ -564,31 +565,31 @@ mason_lspconfig.setup_handlers {
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 local kind_icons = {
-  Text = "",
-  Method = "󰆧",
-  Function = "󰊕",
-  Constructor = "",
-  Field = "󰇽",
-  Variable = "󰂡",
-  Class = "󰠱",
-  Interface = "",
-  Module = "",
-  Property = "󰜢",
-  Unit = "",
-  Value = "󰎠",
-  Enum = "",
-  Keyword = "󰌋",
-  Snippet = "",
-  Color = "󰏘",
-  File = "󰈙",
-  Reference = "",
-  Folder = "󰉋",
-  EnumMember = "",
-  Constant = "󰏿",
-  Struct = "",
-  Event = "",
-  Operator = "󰆕",
-  TypeParameter = "󰅲",
+  Text = '',
+  Method = '󰆧',
+  Function = '󰊕',
+  Constructor = '',
+  Field = '󰇽',
+  Variable = '󰂡',
+  Class = '󰠱',
+  Interface = '',
+  Module = '',
+  Property = '󰜢',
+  Unit = '',
+  Value = '󰎠',
+  Enum = '',
+  Keyword = '󰌋',
+  Snippet = '',
+  Color = '󰏘',
+  File = '󰈙',
+  Reference = '',
+  Folder = '󰉋',
+  EnumMember = '',
+  Constant = '󰏿',
+  Struct = '',
+  Event = '',
+  Operator = '󰆕',
+  TypeParameter = '󰅲',
 }
 
 luasnip.config.setup {}
@@ -642,22 +643,21 @@ cmp.setup {
       vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       -- Source
       vim_item.menu = ({
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[LaTeX]",
+        buffer = '[Buffer]',
+        nvim_lsp = '[LSP]',
+        luasnip = '[LuaSnip]',
+        nvim_lua = '[Lua]',
+        latex_symbols = '[LaTeX]',
       })[entry.source.name]
       return vim_item
-    end
-  }
+    end,
+  },
 }
 
 vim.cmd [[
   set completeopt=menuone,noinsert,noselect,preview
   highlight! default link CmpItemKind CmpItemMenuDefault
 ]]
-
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
