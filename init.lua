@@ -66,10 +66,11 @@ require('lazy').setup({
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer', 'onsails/lspkind.nvim' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer',
+      'onsails/lspkind.nvim' },
   },
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',          opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -86,10 +87,10 @@ require('lazy').setup({
       vim.cmd.colorscheme 'NeoSolarized'
     end,
     opts = {
-      style = 'dark', -- "dark" or "light"
-      transparent = true, -- true/false; Enable this to disable setting the background color
+      style = 'dark',         -- "dark" or "light"
+      transparent = true,     -- true/false; Enable this to disable setting the background color
       terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-      enable_italics = true, -- Italics for different hightlight groups (eg. Statement, Condition, Comment, Include, etc.)
+      enable_italics = true,  -- Italics for different hightlight groups (eg. Statement, Condition, Comment, Include, etc.)
       styles = {
         -- Style to be applied to different syntax groups
         comments = { italic = true },
@@ -175,7 +176,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',         opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -271,31 +272,31 @@ vim.opt.splitbelow = true
 -- Navigation keymaps - Inspired by NvChad
 -- INSERT MODE --
 vim.keymap.set('i', '<C-b>', '<ESC>^i') -- beginning of lines
-vim.keymap.set('i', '<C-e>', '<End>') -- end of line
-vim.keymap.set('i', '<C-h>', '<Left>') -- navigate in insert mode
-vim.keymap.set('i', '<C-j>', '<Down>') -- navigate in insert mode
-vim.keymap.set('i', '<C-k>', '<Up>') -- navigate in insert mode
+vim.keymap.set('i', '<C-e>', '<End>')   -- end of line
+vim.keymap.set('i', '<C-h>', '<Left>')  -- navigate in insert mode
+vim.keymap.set('i', '<C-j>', '<Down>')  -- navigate in insert mode
+vim.keymap.set('i', '<C-k>', '<Up>')    -- navigate in insert mode
 vim.keymap.set('i', '<C-l>', '<Right>') -- navigate in insert mode
 
 -- NORMAL MODE --
-vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>', { silent = true }) -- Open new tab
-vim.keymap.set('n', 'x', '"_x') -- delete character without copying it
-vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { silent = true }) -- save file
-vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { silent = true }) -- copy whole file
-vim.keymap.set('n', '<ESC>', ':noh <CR>', { silent = true }) -- remove search highlights
-vim.keymap.set('n', '<A-h>', '<C-w>h') -- move to window left
-vim.keymap.set('n', '<A-j>', '<C-w>j') -- move to window bottom
-vim.keymap.set('n', '<A-k>', '<C-w>k') -- move to window upper
-vim.keymap.set('n', '<A-l>', '<C-w>l') -- move to window right
-vim.keymap.set('n', '<leader>ss', '<cmd> split <CR><C-w>w', { silent = true }) -- split windows horizontally
+vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>', { silent = true })                 -- Open new tab
+vim.keymap.set('n', 'x', '"_x')                                                 -- delete character without copying it
+vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { silent = true })                 -- save file
+vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { silent = true })               -- copy whole file
+vim.keymap.set('n', '<ESC>', ':noh <CR>', { silent = true })                    -- remove search highlights
+vim.keymap.set('n', '<A-h>', '<C-w>h')                                          -- move to window left
+vim.keymap.set('n', '<A-j>', '<C-w>j')                                          -- move to window bottom
+vim.keymap.set('n', '<A-k>', '<C-w>k')                                          -- move to window upper
+vim.keymap.set('n', '<A-l>', '<C-w>l')                                          -- move to window right
+vim.keymap.set('n', '<leader>ss', '<cmd> split <CR><C-w>w', { silent = true })  -- split windows horizontally
 vim.keymap.set('n', '<leader>sv', '<cmd> vsplit <CR><C-w>w', { silent = true }) -- split windows vertically
-vim.keymap.set('n', '<leader>x', '<cmd> close <CR>', { silent = true }) -- close current window
-vim.keymap.set('n', '<leader>n', '<cmd> set nu! <CR>', { silent = true }) -- toggle number
-vim.keymap.set('n', '<leader>rl', '<cmd> set rnu! <CR>') -- toggle relative number
-vim.keymap.set('n', '<C-w><left>', '<C-w><') -- Resize window horizontally to the left
-vim.keymap.set('n', '<C-w><right>', '<C-w>>') -- Resize window horizontally to the right
-vim.keymap.set('n', '<C-w><up>', '<C-w>+') -- Resize window vertically (bigger)
-vim.keymap.set('n', '<C-w><down>', '<C-w>-') -- Resize window vertically (smaller)
+vim.keymap.set('n', '<leader>x', '<cmd> close <CR>', { silent = true })         -- close current window
+vim.keymap.set('n', '<leader>n', '<cmd> set nu! <CR>', { silent = true })       -- toggle number
+vim.keymap.set('n', '<leader>rl', '<cmd> set rnu! <CR>')                        -- toggle relative number
+vim.keymap.set('n', '<C-w><left>', '<C-w><')                                    -- Resize window horizontally to the left
+vim.keymap.set('n', '<C-w><right>', '<C-w>>')                                   -- Resize window horizontally to the right
+vim.keymap.set('n', '<C-w><up>', '<C-w>+')                                      -- Resize window vertically (bigger)
+vim.keymap.set('n', '<C-w><down>', '<C-w>-')                                    -- Resize window vertically (smaller)
 
 -- REPLACE MODE --
 -- Don't copy the replaced text after pasting in visual mode
@@ -349,7 +350,8 @@ pcall(require('telescope').load_extension, 'fzf')
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', require('telescope.builtin').current_buffer_fuzzy_find, { desc = '[/] Fuzzily search in current buffer' })
+vim.keymap.set('n', '<leader>/', require('telescope.builtin').current_buffer_fuzzy_find,
+  { desc = '[/] Fuzzily search in current buffer' })
 vim.keymap.set('n', '<leader>sc', require('telescope.builtin').colorscheme, { desc = '[S]earch [C]olorscheme' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
@@ -526,7 +528,8 @@ local servers = {
 
   emmet_ls = {
     cmd = { 'emmet_ls', '--stdio' },
-    filetypes = { 'astro', 'css', 'eruby', 'html', 'htmldjango', 'javascriptreact', 'less', 'pug', 'sass', 'scss', 'svelte', 'typescriptreact', 'vue' },
+    filetypes = { 'astro', 'css', 'eruby', 'html', 'htmldjango', 'javascriptreact', 'less', 'pug', 'sass', 'scss',
+      'svelte', 'typescriptreact', 'vue' },
   },
 
   lua_ls = {
@@ -608,11 +611,12 @@ cmp.setup {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete {},
+    ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
+    ['<C-j>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -621,7 +625,7 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
+    ['<C-k>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
