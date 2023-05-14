@@ -66,8 +66,14 @@ require('lazy').setup({
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer',
-      'onsails/lspkind.nvim' },
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-path',
+    },
   },
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',          opts = {} },
@@ -638,7 +644,9 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
+    { name = 'path' },
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'luasnip' },
     { name = 'buffer' },
   },
