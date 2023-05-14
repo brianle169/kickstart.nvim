@@ -318,7 +318,10 @@ vim.keymap.set({ 'n', 'v' }, '<Down>', "v:count || mode(1)[0:1] ? 'j' : 'gj'", {
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    vim.highlight.on_yank()
+    vim.highlight.on_yank {
+      timeout = 200,
+      higroup = 'Search',
+    }
   end,
   group = highlight_group,
   pattern = '*',
