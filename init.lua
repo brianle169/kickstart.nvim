@@ -287,7 +287,7 @@ vim.keymap.set('n', 'x', '"_x')                                                 
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { silent = true })                 -- save file
 -- vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { silent = true })               -- copy whole file
 vim.keymap.set('n', '<ESC>', ':noh <CR>', { silent = true })                    -- remove search highlights
-vim.keymap.set({ 'n' }, '<A-h>', '<C-w>h')                                      -- move to window left
+vim.keymap.set('n', '<A-h>', '<C-w>h')                                          -- move to window left
 vim.keymap.set('n', '<A-j>', '<C-w>j')                                          -- move to window bottom
 vim.keymap.set('n', '<A-k>', '<C-w>k')                                          -- move to window upper
 vim.keymap.set('n', '<A-l>', '<C-w>l')                                          -- move to window right
@@ -302,6 +302,11 @@ vim.keymap.set('n', '<C-w><up>', '<C-w>+')                                      
 vim.keymap.set('n', '<C-w><down>', '<C-w>-')                                    -- Resize window vertically (smaller)
 vim.keymap.set('n', '<C-d>', '<C-d>zz')                                         -- move half page down && center cursor
 vim.keymap.set('n', '<C-u>', '<C-u>zz')                                         -- move half page down && center cursor
+
+-- TERMINAL MODE --
+-- Escape terminal mode
+vim.keymap.set('t', '<C-x>', vim.api.nvim_replace_termcodes('<C-\\><C-N>', true, true, true),
+  { desc = 'Escape terminal mode' })
 
 -- REPLACE MODE --
 -- Don't copy the replaced text after pasting in visual mode
