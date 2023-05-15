@@ -206,6 +206,11 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  {
+    'christoomey/vim-tmux-navigator',
+    lazy = false,
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -287,10 +292,10 @@ vim.keymap.set('n', 'x', '"_x')                                                 
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { silent = true })                 -- save file
 -- vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { silent = true })               -- copy whole file
 vim.keymap.set('n', '<ESC>', ':noh <CR>', { silent = true })                    -- remove search highlights
-vim.keymap.set('n', '<A-h>', '<C-w>h')                                          -- move to window left
-vim.keymap.set('n', '<A-j>', '<C-w>j')                                          -- move to window bottom
-vim.keymap.set('n', '<A-k>', '<C-w>k')                                          -- move to window upper
-vim.keymap.set('n', '<A-l>', '<C-w>l')                                          -- move to window right
+vim.keymap.set('n', '<A-h>', '<cmd> TmuxNavigateLeft <CR>')                     -- move to window left
+vim.keymap.set('n', '<A-j>', '<cmd> TmuxNavigateDown <CR>')                     -- move to window bottom
+vim.keymap.set('n', '<A-k>', '<cmd> TmuxNavigateUp <CR>')                       -- move to window upper
+vim.keymap.set('n', '<A-l>', '<cmd> TmuxNavigateRight <CR>')                    -- move to window right
 vim.keymap.set('n', '<leader>ss', '<cmd> split <CR><C-w>w', { silent = true })  -- split windows horizontally
 vim.keymap.set('n', '<leader>sv', '<cmd> vsplit <CR><C-w>w', { silent = true }) -- split windows vertically
 vim.keymap.set('n', '<leader>x', '<cmd> close <CR>', { silent = true })         -- close current window
