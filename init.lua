@@ -122,7 +122,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'NeoSolarized',
+        theme = 'solarized_dark',
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
       },
@@ -292,10 +292,10 @@ vim.keymap.set('n', 'x', '"_x')                                                 
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { silent = true })                 -- save file
 -- vim.keymap.set('n', '<C-c>', '<cmd> %y+ <CR>', { silent = true })               -- copy whole file
 vim.keymap.set('n', '<ESC>', ':noh <CR>', { silent = true })                    -- remove search highlights
-vim.keymap.set('n', '<A-h>', '<cmd> TmuxNavigateLeft <CR>')                     -- move to window left
-vim.keymap.set('n', '<A-j>', '<cmd> TmuxNavigateDown <CR>')                     -- move to window bottom
-vim.keymap.set('n', '<A-k>', '<cmd> TmuxNavigateUp <CR>')                       -- move to window upper
-vim.keymap.set('n', '<A-l>', '<cmd> TmuxNavigateRight <CR>')                    -- move to window right
+vim.keymap.set('n', '<M-h>', '<cmd> TmuxNavigateLeft <CR>')                     -- move to window left
+vim.keymap.set('n', '<M-j>', '<cmd> TmuxNavigateDown <CR>')                     -- move to window bottom
+vim.keymap.set('n', '<M-k>', '<cmd> TmuxNavigateUp <CR>')                       -- move to window upper
+vim.keymap.set('n', '<M-l>', '<cmd> TmuxNavigateRight <CR>')                    -- move to window right
 vim.keymap.set('n', '<leader>ss', '<cmd> split <CR><C-w>w', { silent = true })  -- split windows horizontally
 vim.keymap.set('n', '<leader>sv', '<cmd> vsplit <CR><C-w>w', { silent = true }) -- split windows vertically
 vim.keymap.set('n', '<leader>x', '<cmd> close <CR>', { silent = true })         -- close current window

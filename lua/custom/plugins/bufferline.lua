@@ -6,13 +6,12 @@ return {
     require('bufferline').setup {
       options = {
         mode = 'tabs',
-        always_show_bufferline = true,
+        always_show_bufferline = false,
         show_buffer_close_icons = false,
-        show_close_icon = true,
+        show_close_icon = false,
         color_icons = true,
         separator_style = 'slant',
         show_tab_indicators = false,
-        diagnostics = 'nvim_lsp',
         offsets = {
           {
             filetype = 'neo-tree',
@@ -24,10 +23,6 @@ return {
             text_align = 'left',
           },
         },
-        diagnostics_indicator = function(count, level)
-          local icon = level:match 'error' and ' ' or ''
-          return ' ' .. icon .. ' ' .. count
-        end,
       },
       highlights = {
         separator = {
