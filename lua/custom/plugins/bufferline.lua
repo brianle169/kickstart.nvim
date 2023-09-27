@@ -10,8 +10,8 @@ return {
         show_buffer_close_icons = false,
         show_close_icon = false,
         color_icons = true,
-        separator_style = 'slant',
         show_tab_indicators = false,
+        separator_style = 'slant',
         offsets = {
           {
             filetype = 'neo-tree',

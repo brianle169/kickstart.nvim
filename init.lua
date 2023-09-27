@@ -160,6 +160,8 @@ require('lazy').setup({
         lualine_z = {},
       },
       tabline = {},
+      winbar = {},
+
       extensions = { 'fugitive' },
     },
   },
